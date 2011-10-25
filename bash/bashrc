@@ -7,11 +7,13 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# Variables
+# VARIABLES
 export PATH=$PATH:~/bin
 export PIP_REQUIRE_VIRTUALENV=true
+#export GIT_PS1_SHOWDIRTYSTATE=true
+#export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-# ALIASE
+# ALIASES
 alias epyc="source ~/projects/env/epyc/bin/activate; cd ~/projects/epyc"
 
 
@@ -27,6 +29,13 @@ shopt -s checkwinsize
 
 PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 
+case "$TERM" in
+xterm*|rxvt*|cygwin*)
+    PROMPT_COMMAND='echo -ne "${TTY}\\033]0;$TERM$(__git_ps1)\007"'
+    ;;
+*)
+    ;;
+esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

@@ -4,7 +4,6 @@ rxvt*background:       #0c0d0e
 rxvt*foreground:       #7f8f9f
 rxvt*scrollBar:        false
 rxvt*matcher.button:   1
-rxvt.transparent:    false
 rxvt*allow_bold:    true
 
 Xft*dpi:                96
@@ -13,8 +12,6 @@ Xft*hinting:            full
 
 rxvt*geometry: 85x16
 rxvt*fading:        0
-rxvt*tintColor:     #ffffff
-rxvt*shading:        0
 rxvt*inheritPixmap:     False
 
 ! black + red
