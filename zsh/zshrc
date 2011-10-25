@@ -18,14 +18,18 @@ RESET="%{$reset_color%}"
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' stagedstr '%F{yellow}!'
 zstyle ':vcs_info:*' unstagedstr '%F{red}!'
-zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' check-for-changes false
+zstyle ':vcs_info:*' get-revision false
+zstyle ':vcs_info:*' formats "[%F{blue}%b%c%u%F{white}]"
 zstyle ':vcs_info:*' enable git 
 precmd () {
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' [%F{blue}%b%c%u %F{white}]'
-    } else {         
-        zstyle ':vcs_info:*' formats ' [%F{blue}%b%c%u%F{red}+%F{white}]'
-    }
+    #local git_info
+    #git_info='[%F{blue}%b%c%u'
+    #if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+    #    zstyle ':vcs_info:*' formats " ${git_info}%F{white}]"
+    #} else {         
+    #    zstyle ':vcs_info:*' formats " ${git_info}%F{red}+%F{white}]"
+    #}
     
     vcs_info
 
