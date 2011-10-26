@@ -1,0 +1,42 @@
+rxvt*font:             xft:montecarlo:size=8
+rxvt*termName:         rxvt
+rxvt*background:       #0c0d0e
+rxvt*foreground:       #7f8f9f
+rxvt*scrollBar:        false
+rxvt*matcher.button:   1
+rxvt*allow_bold:    true
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+rxvt*geometry: 85x16
+rxvt*fading:        0
+rxvt*inheritPixmap:     False
+
+! black + red
+!rxvt*color0:     #3f3f3f
+rxvt*color0:      #101010
+rxvt*color1:      #705050
+! green + yellow
+rxvt*color2:      #60b48a
+rxvt*color3:      #f0dfaf
+! blue + purple
+rxvt*color4:      #506070
+rxvt*color5:      #dc8cc3
+! cyan + white
+rxvt*color6:      #8cd0d3
+rxvt*color7:      #dcdccc
+! bright-black + bright-red
+rxvt*color8:      #000000
+rxvt*color9:      #dca3a3
+! bright-green + bright-yellow
+rxvt*color10:     #c3bf9f
+rxvt*color11:     #f0dfaf
+! bright-blue + bright-purple
+rxvt*color12:     #94bff3
+rxvt*color13:     #ec93d3
+! bright-cyan + bright-white
+rxvt*color14:     #93e0e3
+rxvt*color15:     #ffffff
+!}}}

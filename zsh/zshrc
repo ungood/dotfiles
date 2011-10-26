@@ -1,0 +1,68 @@
+setopt completealiases
+
+# ALIASES
+alias ls='ls --color'
+
+# COLOR VARIABLES
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
+    eval $color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval BRIGHT_$color='%{$fg[${(L)color}]%}'
+done
+RESET="%{$reset_color%}"
+
+# PROMPT
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' stagedstr '%F{yellow}!'
+zstyle ':vcs_info:*' unstagedstr '%F{red}!'
+zstyle ':vcs_info:*' check-for-changes false
+zstyle ':vcs_info:*' get-revision false
+zstyle ':vcs_info:*' formats "[%F{blue}%b%c%u%F{white}]"
+zstyle ':vcs_info:*' enable git 
+precmd () {
+    #local git_info
+    #git_info='[%F{blue}%b%c%u'
+    #if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+    #    zstyle ':vcs_info:*' formats " ${git_info}%F{white}]"
+    #} else {         
+    #    zstyle ':vcs_info:*' formats " ${git_info}%F{red}+%F{white}]"
+    #}
+    
+    vcs_info
+
+    case "$TERM" in
+        rxvt*|xterm*|cygwin)
+            print -Pn "\e]2;%-3~\a" # set screen title
+        ;;
+    esac
+}    
+                                  
+setopt prompt_subst
+PROMPT='${BLUE}%~${RESET}> '
+RPROMPT='${vcs_info_msg_0_}%{$reset_color%}'
+# BIND SPECIAL KEYS
+bindkey "\e[1~" beginning-of-line # Home
+bindkey "\e[4~" end-of-line # End
+bindkey "\e[5~" beginning-of-history # PageUp
+bindkey "\e[6~" end-of-history # PageDown
+bindkey "\e[2~" quoted-insert # Ins
+bindkey "\e[3~" delete-char # Del
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey "\e[Z" reverse-menu-complete # Shift+Tab
+# for rxvt
+bindkey "\e[7~" beginning-of-line # Home
+bindkey "\e[8~" end-of-line # End
+# for non RH/Debian xterm, can't hurt for RH/Debian xterm
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+# for freebsd console
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
