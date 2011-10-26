@@ -13,7 +13,7 @@ export PATH=$PATH:~/bin
 export PIP_REQUIRE_VIRTUALENV=true
 
 alias git=hub
-alias epyc="source ~/projects/env/epyc/bin/activate; cd ~/projects/epyc"
+alias epyc="source ~/projects/envs/epyc/bin/activate; cd ~/projects/epyc"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
