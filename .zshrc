@@ -2,6 +2,7 @@ setopt completealiases
 
 # ALIASES
 alias ls='ls --color'
+alias rm='rm -I'
 
 # COLOR VARIABLES
 autoload colors zsh/terminfo
@@ -9,18 +10,24 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
     colors
 fi
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-    eval $color='%{$terminfo[bold]$fg[${(L)color}]%}'
-    eval BRIGHT_$color='%{$fg[${(L)color}]%}'
+    eval BR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval $color='%{$fg[${(L)color}]%}'
 done
 RESET="%{$reset_color%}"
 
 # PROMPT
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' stagedstr '%F{yellow}!'
-zstyle ':vcs_info:*' unstagedstr '%F{red}!'
-zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:*' get-revision false
-zstyle ':vcs_info:*' formats "[%F{blue}%b%c%u%F{white}]"
+
+# Display a yellow ! when there are staged, but uncommited changes
+zstyle ':vcs_info:*' stagedstr "${BR_YELLOW}*"
+# Display a red ! when there are unstaged changes
+zstyle ':vcs_info:*' unstagedstr "${BR_RED}*"
+# Turning these on can give us the above messages, but is slower
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision true
+# Normal format
+zstyle ':vcs_info:*' formats "${BR_WHITE}[${GREEN}%b%c%u${BR_WHITE}]"
+zstyle ':vcs_info:*' actionformats "${BR_WHITE}[${RED}%a${BR_WHITE}|${GREEN}%b%c%u${BR_WHITE}]"
 zstyle ':vcs_info:*' enable git 
 precmd () {
     #local git_info
@@ -35,14 +42,20 @@ precmd () {
 
     case "$TERM" in
         rxvt*|xterm*|cygwin)
-            print -Pn "\e]2;%-3~\a" # set screen title
+            print -Pn "\e]2;%n@%m %~\a" # set screen title
         ;;
     esac
 }    
                                   
 setopt prompt_subst
-PROMPT='${BLUE}%~${RESET}> '
-RPROMPT='${vcs_info_msg_0_}%{$reset_color%}'
+PROMPT='${YELLOW}%1~%(!.${RED}.${BLUE}> ${RESET}'
+RPROMPT='${vcs_info_msg_0_} ${BR_WHITE}[${CYAN}%@${BR_WHITE}]$RESET'
+
+# COMPLETION
+#local knownhosts
+#knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} ) 
+#zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
+
 # BIND SPECIAL KEYS
 bindkey "\e[1~" beginning-of-line # Home
 bindkey "\e[4~" end-of-line # End
