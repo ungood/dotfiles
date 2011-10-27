@@ -28,23 +28,19 @@ fi
 # PROMPT
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-# Display a yellow ! when there are staged, but uncommited changes
-zstyle ':vcs_info:*' stagedstr "${BR_WHITE}|${BR_RED}c"
-# Display a red ! when there are unstaged changes
-zstyle ':vcs_info:*' unstagedstr "${BR_WHITE}|${BR_RED}a"
-# Turning these on can give us the above messages, but is slower
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
-# Normal format
-zstyle ':vcs_info:*' formats "(%s) %12.12i %c%u %b%m" # hash, changes, branch, misc
-#zstyle ':vcs_info:*' formats "${BR_WHITE}[${GREEN}%b%c%u${BR_WHITE}]"
-#zstyle ':vcs_info:*' actionformats "${BR_WHITE}[${RED}%a${BR_WHITE}|${GREEN}%b%c%u${BR_WHITE}]"
+zstyle ':vcs_info:*' stagedstr "${BR_GREEN}S"
+zstyle ':vcs_info:*' unstagedstr "${BR_RED}U"
+zstyle ':vcs_info:git*+set-message:*' hooks git-st
+vcs_format="%m %c%u ${BR_WHITE}[${BLUE}%b${WHITE}->${BLUE}%6.6i${BR_WHITE}]"
+zstyle ':vcs_info:*' formats "${vcs_format}"
+zstyle ':vcs_info:*' actionformats "${BR_WHITE}(%a) ${vcs_format}"
 
 # Show remote ref name and number of commits ahead-of or behind
 function +vi-git-st() {
     local ahead behind remote
     local -a gitstatus
-
     # Are we on a remote-tracking branch?
     remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
         --symbolic-full-name --abbrev-ref 2>/dev/null)}
@@ -53,14 +49,14 @@ function +vi-git-st() {
         # for git prior to 1.7
         # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
         ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
-        (( $ahead )) && gitstatus+=( "${green}+${ahead}${gray}" )
+        (( $ahead )) && gitstatus+=( "${YELLOW}+${ahead}" )
 
         # for git prior to 1.7
         # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
         behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
-        (( $behind )) && gitstatus+=( "${red}-${behind}${gray}" )
+        (( $behind )) && gitstatus+=( "${YELLOW}-${behind}" )
 
-        hook_com[branch]="${hook_com[branch]} [${remote} ${(j:/:)gitstatus}]"
+        hook_com[misc]="${(j:/:)gitstatus}"
     fi
 }
 
