@@ -63,20 +63,9 @@ precmd () {
 }    
                                   
 setopt prompt_subst
-<<<<<<< HEAD
-PROMPT='${BLUE}%~${RESET}> '
-RPROMPT='${vcs_info_msg_0_}%{$reset_color%}'
 
-export PATH=.:$PATH
-=======
 PROMPT='${YELLOW}%1~%(!.${RED}.${BLUE}> ${RESET}'
 RPROMPT='${vcs_info_msg_0_} ${BR_WHITE}[${CYAN}%@${BR_WHITE}]$RESET'
-
-# COMPLETION
-#local knownhosts
-#knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} ) 
-#zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
->>>>>>> 27cb5348f558de4469568f2de76ac8355dd86971
 
 # BIND SPECIAL KEYS
 bindkey "\e[1~" beginning-of-line # Home
