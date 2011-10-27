@@ -1,0 +1,39 @@
+rxvt*termName:         rxvt
+rxvt*background:       #0c0d0e
+rxvt*foreground:       #7f8f9f
+rxvt*scrollBar:        false
+rxvt*matcher.button:   1
+rxvt*allow_bold:    true
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+rxvt*geometry: 85x16
+rxvt*fading:        0
+rxvt*inheritPixmap:     False
+
+!black
+rxvt*color0:      #000000
+rxvt*color8:      #555753
+!red
+rxvt*color1:      #CC0000
+rxvt*color9:      #EF2929
+!green
+rxvt*color2:      #4E9A06
+rxvt*color10:     #8AE234
+!yellow
+rxvt*color3:      #C4A000
+rxvt*color11:     #FCE94F
+!blue
+rxvt*color4:      #3465A4
+rxvt*color12:     #729FCF
+!magenta
+rxvt*color5:      #75507B
+rxvt*color13:     #AD7FA8
+!cyan
+rxvt*color6:      #06989A
+rxvt*color14:     #34E2E2
+!white
+rxvt*color7:      #D3D7CF
+rxvt*color15:     #ECEDEE

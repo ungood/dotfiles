@@ -2,6 +2,7 @@ setopt completealiases
 
 # ALIASES
 alias ls='ls --color'
+alias rm='rm -I'
 
 # COLOR VARIABLES
 autoload colors zsh/terminfo
@@ -9,8 +10,8 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
     colors
 fi
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-    eval $color='%{$terminfo[bold]$fg[${(L)color}]%}'
-    eval BRIGHT_$color='%{$fg[${(L)color}]%}'
+    eval BR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval $color='%{$fg[${(L)color}]%}'
 done
 RESET="%{$reset_color%}"
 
@@ -26,13 +27,23 @@ fi
 
 # PROMPT
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' stagedstr '%F{yellow}!'
-zstyle ':vcs_info:*' unstagedstr '%F{red}!'
-zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:*' get-revision false
-zstyle ':vcs_info:*' formats "[%F{blue}%b%c%u%F{white}]"
+
+# Display a yellow ! when there are staged, but uncommited changes
+zstyle ':vcs_info:*' stagedstr "${BR_WHITE}|${BR_RED}c"
+# Display a red ! when there are unstaged changes
+zstyle ':vcs_info:*' unstagedstr "${BR_WHITE}|${BR_RED}a"
+# Turning these on can give us the above messages, but is slower
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' get-revision true
+# Normal format
+zstyle ':vcs_info:*' formats "${BR_WHITE}[${GREEN}%b%c%u${BR_WHITE}]"
+zstyle ':vcs_info:*' actionformats "${BR_WHITE}[${RED}%a${BR_WHITE}|${GREEN}%b%c%u${BR_WHITE}]"
 zstyle ':vcs_info:*' enable git 
 precmd () {
+#    export AHEAD=$(wc -l | git rev-list HEAD --not --remotes)
+#    if [ $? -ne 0 ]; then
+#        expor AHEAD=''
+#    fi
     #local git_info
     #git_info='[%F{blue}%b%c%u'
     #if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
@@ -46,16 +57,26 @@ precmd () {
 
     case "$TERM" in
         rxvt*|xterm*|cygwin)
-            print -Pn "\e]2;%-3~\a" # set screen title
+            print -Pn "\e]2;%n@%m %~\a" # set screen title
         ;;
     esac
 }    
                                   
 setopt prompt_subst
+<<<<<<< HEAD
 PROMPT='${BLUE}%~${RESET}> '
 RPROMPT='${vcs_info_msg_0_}%{$reset_color%}'
 
 export PATH=.:$PATH
+=======
+PROMPT='${YELLOW}%1~%(!.${RED}.${BLUE}> ${RESET}'
+RPROMPT='${vcs_info_msg_0_} ${BR_WHITE}[${CYAN}%@${BR_WHITE}]$RESET'
+
+# COMPLETION
+#local knownhosts
+#knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} ) 
+#zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
+>>>>>>> 27cb5348f558de4469568f2de76ac8355dd86971
 
 # BIND SPECIAL KEYS
 bindkey "\e[1~" beginning-of-line # Home
