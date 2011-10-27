@@ -27,7 +27,7 @@ fi
 
 # PROMPT
 autoload -Uz vcs_info
-
+zstyle ':vcs_info:*' enable git
 # Display a yellow ! when there are staged, but uncommited changes
 zstyle ':vcs_info:*' stagedstr "${BR_WHITE}|${BR_RED}c"
 # Display a red ! when there are unstaged changes
@@ -36,23 +36,35 @@ zstyle ':vcs_info:*' unstagedstr "${BR_WHITE}|${BR_RED}a"
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 # Normal format
-zstyle ':vcs_info:*' formats "${BR_WHITE}[${GREEN}%b%c%u${BR_WHITE}]"
-zstyle ':vcs_info:*' actionformats "${BR_WHITE}[${RED}%a${BR_WHITE}|${GREEN}%b%c%u${BR_WHITE}]"
-zstyle ':vcs_info:*' enable git 
+zstyle ':vcs_info:*' formats "(%s) %12.12i %c%u %b%m" # hash, changes, branch, misc
+#zstyle ':vcs_info:*' formats "${BR_WHITE}[${GREEN}%b%c%u${BR_WHITE}]"
+#zstyle ':vcs_info:*' actionformats "${BR_WHITE}[${RED}%a${BR_WHITE}|${GREEN}%b%c%u${BR_WHITE}]"
+
+# Show remote ref name and number of commits ahead-of or behind
+function +vi-git-st() {
+    local ahead behind remote
+    local -a gitstatus
+
+    # Are we on a remote-tracking branch?
+    remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
+        --symbolic-full-name --abbrev-ref 2>/dev/null)}
+
+    if [[ -n ${remote} ]] ; then
+        # for git prior to 1.7
+        # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
+        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+        (( $ahead )) && gitstatus+=( "${green}+${ahead}${gray}" )
+
+        # for git prior to 1.7
+        # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
+        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+        (( $behind )) && gitstatus+=( "${red}-${behind}${gray}" )
+
+        hook_com[branch]="${hook_com[branch]} [${remote} ${(j:/:)gitstatus}]"
+    fi
+}
+
 precmd () {
-#    export AHEAD=$(wc -l | git rev-list HEAD --not --remotes)
-#    if [ $? -ne 0 ]; then
-#        expor AHEAD=''
-#    fi
-    #local git_info
-    #git_info='[%F{blue}%b%c%u'
-    #if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-    #    zstyle ':vcs_info:*' formats " ${git_info}%F{white}]"
-    #} else {         
-    #    zstyle ':vcs_info:*' formats :q
-    #" ${git_info}%F{red}+%F{white}]"
-    #}
-    
     vcs_info
 
     case "$TERM" in
@@ -90,3 +102,7 @@ bindkey "\eOF" end-of-line
 # for freebsd console
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
+
+if [[ -f $HOME/.zshrc_local ]]; then
+  source $HOME/.zshrc_local
+fi
