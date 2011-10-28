@@ -33,7 +33,7 @@ zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "${BR_GREEN}S"
 zstyle ':vcs_info:*' unstagedstr "${BR_RED}U"
 zstyle ':vcs_info:git*+set-message:*' hooks git-st
-vcs_format="%m %c%u ${BR_WHITE}[${BLUE}%b${WHITE}->${BLUE}%6.6i${BR_WHITE}]"
+vcs_format="%m %c%u ${BR_WHITE}[${CYAN}%b${WHITE}->${BLUE}%6.6i${BR_WHITE}]"
 zstyle ':vcs_info:*' formats "${vcs_format}"
 zstyle ':vcs_info:*' actionformats "${BR_WHITE}(%a) ${vcs_format}"
 
@@ -60,8 +60,28 @@ function +vi-git-st() {
     fi
 }
 
+# Windows has a slower implementation of git, so
+# this is a pared-down version of my git prompt for Cygwin
+function fast-git() {
+    local branch revision
+    branch=$(git symbolic-ref HEAD 2>/dev/null)
+    branch=${branch##refs/heads/}
+
+
+    if [[ -n $branch ]]; then
+        revision=$(git rev-parse --verify HEAD 2>/dev/null)
+        vcs_info_msg_0_="${BR_WHITE}[${BLUE}%6>>${revision}%>>${BR_WHITE}-${BR_CYAN}${branch}${BR_WHITE}]"
+    else
+        vcs_info_msg_0_=""
+    fi
+}
+
 precmd () {
-    vcs_info
+    if [[ $TERM -eq cygwin ]]; then
+       fast-git
+    else
+        vcs_info
+    fi
 
     case "$TERM" in
         rxvt*|xterm*|cygwin)
@@ -73,7 +93,7 @@ precmd () {
 setopt prompt_subst
 
 PROMPT='${YELLOW}%1~%(!.${RED}.${BLUE}> ${RESET}'
-RPROMPT='${vcs_info_msg_0_} ${BR_WHITE}[${CYAN}%@${BR_WHITE}]$RESET'
+RPROMPT='${vcs_info_msg_0_}$RESET'
 
 # BIND SPECIAL KEYS
 bindkey "\e[1~" beginning-of-line # Home
