@@ -42,7 +42,7 @@ function git-remote() {
     remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
         --symbolic-full-name --abbrev-ref 2>/dev/null)}
 
-    gitstatus=""
+    gitstatus=()
 
     if [[ -n ${remote} ]] ; then
         ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
@@ -69,7 +69,7 @@ function fast-git() {
     branch=${branch##refs/heads/}
 
     if [[ -n $branch ]]; then
-        git-remote
+        #git-remote #too slow :(
         revision=$(git rev-parse --verify HEAD 2>/dev/null)
         vcs_info_msg_0_="${gitstatus} ${BR_WHITE}[${BLUE}%6>>${revision}%>>${BR_WHITE}-${BR_CYAN}${branch}${BR_WHITE}]"
     else
