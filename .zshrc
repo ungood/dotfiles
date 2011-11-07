@@ -33,7 +33,7 @@ zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "${BR_GREEN}S"
 zstyle ':vcs_info:*' unstagedstr "${BR_RED}U"
 zstyle ':vcs_info:git*+set-message:*' hooks git-st
-vcs_format="%m %c%u ${BR_WHITE}[${CYAN}%b${WHITE}->${BLUE}%6.6i${BR_WHITE}]"
+vcs_format="%m %c%u ${BR_WHITE}[${CYAN}%6.6i${WHITE}-${BLUE}%b${BR_WHITE}]"
 zstyle ':vcs_info:*' formats "${vcs_format}"
 zstyle ':vcs_info:*' actionformats "${BR_WHITE}(%a) ${vcs_format}"
 
@@ -78,8 +78,8 @@ function fast-git() {
 }
 
 precmd () {
-    if [[ $TERM -eq cygwin ]]; then
-       fast-git
+    if [[ "$TERM" = "cygwin" ]]; then
+        fast-git
     else
         vcs_info
     fi

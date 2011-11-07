@@ -13,6 +13,8 @@
 	co = checkout
 	ci = commit
 	br = branch
+	finish = flow feature finish
+	start = flow feature start
 [apply]
 	whitespace = nowarn
 [mergetool]
