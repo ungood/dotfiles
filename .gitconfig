@@ -7,18 +7,23 @@
 	ui = auto
 [core]
 	editor = vim
+	autocrlf = true
 [alias]
 	st = status
 	co = checkout
 	ci = commit
 	br = branch
-
 [apply]
 	whitespace = nowarn
 [mergetool]
-
 	keepBackup = false
 [format]
-        pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
+	pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
 [log]
 	date = short
+[mergetool "p4merge"]
+	cmd = \"c:/Program Files/Perforce/p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	path = c:/Program Files/Perforce/p4merge.exe
+[difftool "p4merge"]
+	path = C:/Program Files/Perforce/p4merge.exe
+	cmd = \"C:/Program Files/Perforce/p4merge.exe\" \"$LOCAL\" \"$REMOTE\"
