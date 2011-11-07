@@ -9,7 +9,6 @@
 	editor = vim
 [alias]
 	st = status
-	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	co = checkout
 	ci = commit
 	br = branch
@@ -22,4 +21,7 @@
 [mergetool]
 
 	keepBackup = false
-[bash]
+[format]
+        pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
+[log]
+	date = short

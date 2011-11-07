@@ -37,27 +37,28 @@ vcs_format="%m %c%u ${BR_WHITE}[${CYAN}%6.6i${WHITE}-${BLUE}%b${BR_WHITE}]"
 zstyle ':vcs_info:*' formats "${vcs_format}"
 zstyle ':vcs_info:*' actionformats "${BR_WHITE}(%a) ${vcs_format}"
 
-# Show remote ref name and number of commits ahead-of or behind
-function +vi-git-st() {
-    local ahead behind remote
-    local -a gitstatus
+function git-remote() {
     # Are we on a remote-tracking branch?
     remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
         --symbolic-full-name --abbrev-ref 2>/dev/null)}
 
+    gitstatus=()
+
     if [[ -n ${remote} ]] ; then
-        # for git prior to 1.7
-        # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
         ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
         (( $ahead )) && gitstatus+=( "${YELLOW}+${ahead}" )
-
-        # for git prior to 1.7
-        # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
+        
         behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
         (( $behind )) && gitstatus+=( "${YELLOW}-${behind}" )
-
-        hook_com[misc]="${(j:/:)gitstatus}"
+       
+        gitstatus="${(j:/:)gitstatus}"
     fi
+}
+
+# Show remote ref name and number of commits ahead-of or behind
+function +vi-git-st() {
+    git-remote
+    hook_com[misc]=${gitstatus}
 }
 
 # Windows has a slower implementation of git, so
@@ -67,10 +68,10 @@ function fast-git() {
     branch=$(git symbolic-ref HEAD 2>/dev/null)
     branch=${branch##refs/heads/}
 
-
     if [[ -n $branch ]]; then
+        #git-remote #too slow :(
         revision=$(git rev-parse --verify HEAD 2>/dev/null)
-        vcs_info_msg_0_="${BR_WHITE}[${BLUE}%6>>${revision}%>>${BR_WHITE}-${BR_CYAN}${branch}${BR_WHITE}]"
+        vcs_info_msg_0_="${gitstatus} ${BR_WHITE}[${BLUE}%6>>${revision}%>>${BR_WHITE}-${BR_CYAN}${branch}${BR_WHITE}]"
     else
         vcs_info_msg_0_=""
     fi
@@ -92,7 +93,7 @@ precmd () {
                                   
 setopt prompt_subst
 
-PROMPT='${YELLOW}%1~%(!.${RED}.${BLUE}> ${RESET}'
+PROMPT='${YELLOW}%3~%(!.${RED}.${BLUE}> ${RESET}'
 RPROMPT='${vcs_info_msg_0_}$RESET'
 
 # BIND SPECIAL KEYS
