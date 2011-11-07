@@ -14,6 +14,8 @@
 	ci = commit
 	br = branch
 	root = !cd $(pwd)
+	finish = flow feature finish
+	start = flow feature start
 
 [apply]
 	whitespace = nowarn

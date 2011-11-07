@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-FILES=`ls -A1 $DIR | egrep -iv "^\.git" | egrep -i "^\."`
+FILES=`ls -A1 $DIR | egrep -iv "^\.git$" | egrep -i "^\."`
 for file in $FILES
 do
     echo $file
