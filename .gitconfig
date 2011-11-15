@@ -15,6 +15,9 @@
 	br = branch
 	finish = flow feature finish
 	start = flow feature start
+	mergewin = config --local merge.tool p4merge
+	diffwin = config --local diff.guitool p4merge
+	call = !git add -A . && git commit
 [apply]
 	whitespace = nowarn
 [mergetool]

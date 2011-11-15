@@ -28,7 +28,7 @@ fi
 # PROMPT
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "${BR_GREEN}S"
 zstyle ':vcs_info:*' unstagedstr "${BR_RED}U"
@@ -57,7 +57,9 @@ function git-remote() {
 
 # Show remote ref name and number of commits ahead-of or behind
 function +vi-git-st() {
-    git-remote
+    if [[ "$TERM" != "cygwin" ]]; then
+        git-remote
+    fi
     hook_com[misc]=${gitstatus}
 }
 
@@ -77,10 +79,20 @@ function fast-git() {
     fi
 }
 
-precmd () {
-    if [[ "$TERM" = "cygwin" ]]; then
-        fast-git
+chpwd() {
+    run_vcs_info="YES"
+}
+
+preexec() {
+    if [[ "$1" =~ "^git" ]]; then
+        run_vcs_info="YES"
     else
+        run_vcs_info="NO"
+    fi
+}
+
+precmd () {
+    if [[ $run_vcs_info == "YES" ]]; then
         vcs_info
     fi
 
