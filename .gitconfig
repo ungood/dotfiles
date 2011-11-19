@@ -18,6 +18,8 @@
 	mergewin = config --local merge.tool p4merge
 	diffwin = config --local diff.guitool p4merge
 	call = !git add -A . && git commit
+	refgraph = log --graph --all --simplify-by-decoration
+	rstatus = remote show origin
 [apply]
 	whitespace = nowarn
 [mergetool]
@@ -32,3 +34,5 @@
 [difftool "p4merge"]
 	path = C:/Program Files/Perforce/p4merge.exe
 	cmd = \"C:/Program Files/Perforce/p4merge.exe\" \"$LOCAL\" \"$REMOTE\"
+[branch]
+	autosetuprebase = remote

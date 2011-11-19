@@ -135,3 +135,7 @@ bindkey "\e[F" end-of-line
 if [[ -f $HOME/.zshrc_local ]]; then
   source $HOME/.zshrc_local
 fi
+
+if [[ -d $HOME/bin ]]; then
+    export PATH="$HOME/bin:$PATH"
+fi
