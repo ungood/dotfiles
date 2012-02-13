@@ -36,3 +36,5 @@
 	cmd = \"C:/Program Files/Perforce/p4merge.exe\" \"$LOCAL\" \"$REMOTE\"
 [branch]
 	autosetuprebase = remote
+[push]
+	default = tracking
