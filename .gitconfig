@@ -8,6 +8,7 @@
 [core]
 	editor = vim
 	autocrlf = true
+	filemode = false
 [alias]
 	st = status
 	co = checkout
