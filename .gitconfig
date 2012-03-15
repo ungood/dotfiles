@@ -7,17 +7,13 @@
 	ui = auto
 [core]
 	editor = vim
-	autocrlf = true
+	autocrlf = false
 	filemode = false
 [alias]
 	st = status
 	co = checkout
 	ci = commit
 	br = branch
-	finish = flow feature finish
-	start = flow feature start
-	mergewin = config --local merge.tool p4merge
-	diffwin = config --local diff.guitool p4merge
 	call = !git add -A . && git commit
 	refgraph = log --graph --all --simplify-by-decoration
 	rstatus = remote show origin
@@ -29,6 +25,10 @@
 	pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
 [log]
 	date = short
+[merge]
+        tool = p4merge
+[diff]
+        guitool = p4merge
 [mergetool "p4merge"]
 	cmd = \"c:/Program Files/Perforce/p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	path = c:/Program Files/Perforce/p4merge.exe
