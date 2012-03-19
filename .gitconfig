@@ -17,6 +17,7 @@
 	call = !git add -A . && git commit
 	refgraph = log --graph --all --simplify-by-decoration
 	rstatus = remote show origin
+	fixmodes = !git fixmodes fixmodes ls-tree -r master . | grep 100755 | cut -f 2 | xargs -d'\\n' chmod -x
 [apply]
 	whitespace = nowarn
 [mergetool]
