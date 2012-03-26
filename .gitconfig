@@ -16,11 +16,10 @@
 	br = branch
 	finish = flow feature finish
 	start = flow feature start
-	mergewin = config --local merge.tool p4merge
-	diffwin = config --local diff.guitool p4merge
 	call = !git add -A . && git commit
 	refgraph = log --graph --all --simplify-by-decoration
 	rstatus = remote show origin
+        obliterate = "!f() { git filter-branch --index-filger 'git rm --cached --ignore-unmatch $1'; }; f"
 [apply]
 	whitespace = nowarn
 [mergetool]
