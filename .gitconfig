@@ -7,7 +7,6 @@
 	ui = auto
 [core]
 	editor = vim
-	autocrlf = false
 	filemode = false
 [alias]
 	st = status
