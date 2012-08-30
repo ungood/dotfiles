@@ -24,6 +24,16 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+function git-recurse() {
+    for gitdir in `find ./ -name .git`;
+    do
+        workdir=${gitdir%/*};
+        echo;
+        echo $workdir;
+        git --git-dir=$gitdir --work-tree=$workdir status;
+    done
+}
+
 
 # PROMPT
 autoload -Uz vcs_info
