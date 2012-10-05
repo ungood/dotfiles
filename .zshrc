@@ -2,7 +2,6 @@ setopt completealiases
 
 # ALIASES
 alias ls='ls --color'
-alias rm='rm -I'
 
 # COLOR VARIABLES
 autoload colors zsh/terminfo

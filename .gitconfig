@@ -7,8 +7,7 @@
 	ui = auto
 [core]
 	editor = vim
-	autocrlf = true
-	filemode = false
+	filemode = true
 [alias]
 	st = status
 	co = checkout
@@ -29,11 +28,12 @@
 [log]
 	date = short
 [mergetool "p4merge"]
-	cmd = \"c:/Program Files/Perforce/p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-	path = c:/Program Files/Perforce/p4merge.exe
-[difftool "p4merge"]
-	path = C:/Program Files/Perforce/p4merge.exe
-	cmd = \"C:/Program Files/Perforce/p4merge.exe\" \"$LOCAL\" \"$REMOTE\"
+    cmd = "p4merge" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+[diff]
+    external = p4diff
 [branch]
 	autosetuprebase = remote
 [push]
