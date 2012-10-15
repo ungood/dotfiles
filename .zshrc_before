@@ -1,0 +1,38 @@
+ENVIMPPATH=/apollo/env/envImprovement
+if [[ -f  $ENVIMPPATH/var/zshrc ]]; then
+    source /apollo/env/envImprovement/var/zshrc
+else
+    echo "Could not find envImprovement environment!"
+fi
+
+export AMAZON=jwwalker
+
+export PATH=/apollo/env/eclipse-3.7/bin:$PATH
+export P4EDITOR=vim
+export EDITOR=vim
+
+# Brazil Settings
+export BRAZIL_WORKSPACE_DEFAULT_LAYOUT=short
+export BRAZIL_WORKSPACE_GITMODE=1
+
+export ORACLE_VERSION=10.2.0.2
+export ORACLE_HOME=/opt/app/oracle/product/${ORACLE_VERSION}/client
+export PATH=$ORACLE_HOME/bin:$PATH
+#export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$ORACLE_HOME/lib32:$LD_LIBRARY_PATH
+
+alias -g ics='WDItemCostService'
+alias -g als='WDLiquidationService'
+alias -g liqwf='WDLiquidationWorkflow'
+alias -g applog='application.log.`date -u +%F-%H`'
+alias -g svclog='service_log.`date -u +%F-%H`'
+
+function ws() {
+    cd /workplace/jwwalker/$1
+}
+
+alias bb='brazil-build'
+alias bba='brazil-build apollo-pkg'
+alias bbb='brazil-build && brazil-build apollo-pkg'
+
+alias br-attach='brazil ws --attachenvironment --alias'
+alias activate='runCommand -a activate -e'

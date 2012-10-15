@@ -1,7 +1,14 @@
+if [[ -f $HOME/.zshrc_before ]]; then
+  source $HOME/.zshrc_before
+fi
+
+export PAGER=less
+
 setopt completealiases
 
 # ALIASES
 alias ls='ls --color'
+alias mt='multitail'
 
 # COLOR VARIABLES
 autoload colors zsh/terminfo
@@ -95,12 +102,15 @@ precmd () {
         vcs_info
     fi
 
-    case "$TERM" in
-        rxvt*|xterm*|cygwin)
-            print -Pn "\e]2;%n@%m %~\a" # set screen title
-        ;;
-    esac
-}    
+    if [[ -z $AMAZON ]]; then
+        case "$TERM" in
+            rxvt*|xterm*|cygwin)
+                print -Pn "\e]2;%n@%m %~\a" # set screen title
+            ;;
+        esac
+    fi
+}
+
                                   
 setopt prompt_subst
 
@@ -131,8 +141,8 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
-if [[ -f $HOME/.zshrc_local ]]; then
-  source $HOME/.zshrc_local
+if [[ -f $HOME/.zshrc_after ]]; then
+  source $HOME/.zshrc_after
 fi
 
 if [[ -d $HOME/bin ]]; then

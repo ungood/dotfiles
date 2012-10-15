@@ -8,6 +8,7 @@
 [core]
 	editor = vim
 	filemode = true
+	excludesfile = /home/jwwalker/.gitignore_global
 [alias]
 	st = status
 	co = checkout
@@ -33,8 +34,9 @@
     trustExitCode = false
     keepBackup = false
 [diff]
-    external = p4diff
 [branch]
 	autosetuprebase = remote
 [push]
 	default = tracking
+[merge]
+	tool = p4merge
