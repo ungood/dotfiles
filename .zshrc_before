@@ -1,8 +1,15 @@
 ENVIMPPATH=/apollo/env/envImprovement
-if [[ -f  $ENVIMPPATH/var/zshrc ]]; then
-    source /apollo/env/envImprovement/var/zshrc
+
+if [[ -f $ENVIMPPATH/var/zshrc ]]; then
+    source $ENVIMPPATH/var/zshrc
 else
     echo "Could not find envImprovement environment!"
+fi
+
+AGITPATH=/apollo/env/git/Bin
+
+if [[ -f $AGITPATH ]]; then
+    source $AGITPATH
 fi
 
 export AMAZON=jwwalker
@@ -20,6 +27,11 @@ export ORACLE_HOME=/opt/app/oracle/product/${ORACLE_VERSION}/client
 export PATH=$ORACLE_HOME/bin:$PATH
 #export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$ORACLE_HOME/lib32:$LD_LIBRARY_PATH
 
+alias -g timber-iad='fc-wd-naop-5001.iad5.amazon.com'
+alias -g timber-dub='fc-wd-euop-12002.dub2.amazon.com'
+alias -g timber-sea='fc-wd-sea-31002.sea31.amazon.com'
+
+
 alias -g ics='WDItemCostService'
 alias -g als='WDLiquidationService'
 alias -g liqwf='WDLiquidationWorkflow'
@@ -30,9 +42,13 @@ function ws() {
     cd /workplace/jwwalker/$1
 }
 
+function activate() {
+    sudo runCommand -a activate -e $1
+}
+
+alias mnthome='sudo mount -t cifs -o username=$USER,rw,uid=$USER,gid=amazon,port=445 \\\\file-0115.ant.amazon.com\\seaa\\$USER /mnt/home'
 alias bb='brazil-build'
 alias bba='brazil-build apollo-pkg'
 alias bbb='brazil-build && brazil-build apollo-pkg'
 
 alias br-attach='brazil ws --attachenvironment --alias'
-alias activate='runCommand -a activate -e'
