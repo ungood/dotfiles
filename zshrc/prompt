@@ -1,3 +1,14 @@
+# COLOR VARIABLES
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
+    eval BR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval $color='%{$fg[${(L)color}]%}'
+done
+RESET="%{$reset_color%}"
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
@@ -51,31 +62,11 @@ function fast-git() {
     fi
 }
 
-chpwd() {
-    run_vcs_info="YES"
-}
-
-preexec() {
-    if [[ "$1" =~ "^git" ]]; then
-        run_vcs_info="YES"
-    else
-        run_vcs_info="NO"
-    fi
-}
-
-precmd () {
-    if [[ $run_vcs_info == "YES" ]]; then
+if is-at-least 4.3.11; then
+    function precmd() {
         vcs_info
-    fi
-
-    if [[ -z $AMAZON ]]; then
-        case "$TERM" in
-            rxvt*|xterm*|cygwin)
-                print -Pn "\e]2;%n@%m %~\a" # set screen title
-            ;;
-        esac
-    fi
-}
+    }
+fi
                                   
 setopt prompt_subst
 

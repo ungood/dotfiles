@@ -1,0 +1,4 @@
+if [[ -d /apollo ]]; then
+    export AMAZON=TRUE
+    source-all $DOTFILES_DIR/zshrc/amazon
+fi

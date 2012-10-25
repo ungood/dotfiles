@@ -1,0 +1,34 @@
+DOTFILES_DIR=$HOME/.dotfiles
+
+source-one() {
+    if [ -f "$1" ]; then
+        source "$1"
+    fi
+}
+        
+source-all() {
+    if [ ! -d "$1" ]; then
+        echo "no such directory: $1"
+        return 1
+    fi
+    for f in "$1"/*(.N,@N); do
+        case "$f" in
+            *~|*.bak|*.old|*.sw?|*.zwc|*.disabled) continue;;
+        esac
+        source-one $f
+    done
+}
+
+prepend-path() {
+    if [ -d "$1" ]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+if [[ -o rcs ]]; then
+    _DIR=$DOTFILES_DIR/${${(%):-%1N}#.}
+    source-all $_DIR
+    unset _DIR
+fi
+
+# vim:ft=zsh
