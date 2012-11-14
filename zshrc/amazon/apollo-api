@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+APOLLO_API_URL="http://apollo-environment.amazon.com"
+
+function find-envs-by-package() {
+    recs-fromatomfeed "$APOLLO_API_URL/environmentStages?package=$1" |
+        recs-eval '{{title}}'
+#        recs-generate "recs-fromatomfeed $APOLLO_API_URL/environmentStages/{{title}}/-/cachedCapacity" 
+#        recs-grep "\$r->{{deploymentStage}} eq \"$2\"" |
+#        recs-eval '$r->{deploymentStage} . " : " . $r->{title}'
+#        recs-eval '$r'
+}
+
+function find-hosts-by-env() {
+    recs-fromatomfeed "$APOLLO_API_URL/environmentStages/$1/-/cachedCapacity" |
+    recs-eval '{{title}}'
+}

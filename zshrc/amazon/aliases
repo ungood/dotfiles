@@ -1,3 +1,5 @@
+#!/bin/zsh 
+
 alias -g ics='WDItemCostService'
 alias -g als='WDLiquidationService'
 alias -g liqwf='WDLiquidationWorkflow'
@@ -8,7 +10,12 @@ function ws() {
     cd /workplace/jwwalker/$1
 }
 
+function gopkg() {
+    ws $1
+    cdpkg $2
+}
+
 function activate() {
-    sudo runCommand -a activate -e $1
+    sudo runCommand -a Activate -e $1
 }
 

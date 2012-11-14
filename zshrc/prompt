@@ -11,7 +11,7 @@ RESET="%{$reset_color%}"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes false
+zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
 zstyle ':vcs_info:*' stagedstr "${BR_GREEN}S"
 zstyle ':vcs_info:*' unstagedstr "${BR_RED}U"

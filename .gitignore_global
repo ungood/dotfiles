@@ -5,6 +5,8 @@
 eclipse-bin
 build
 coral-generated-src
+apollo-overrides
 
+*.iml
 # Temp files
 *.swp
