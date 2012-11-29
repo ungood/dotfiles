@@ -2,13 +2,20 @@
 
 APOLLO_API_URL="http://apollo-environment.amazon.com"
 
-function find-envs-by-package() {
-    recs-fromatomfeed "$APOLLO_API_URL/environmentStages?package=$1" |
+function find-envs() {
+    recs-fromatomfeed "$APOLLO_API_URL/environmentStages?nameSubstring=$1" | 
         recs-eval '{{title}}'
-#        recs-generate "recs-fromatomfeed $APOLLO_API_URL/environmentStages/{{title}}/-/cachedCapacity" 
-#        recs-grep "\$r->{{deploymentStage}} eq \"$2\"" |
-#        recs-eval '$r->{deploymentStage} . " : " . $r->{title}'
-#        recs-eval '$r'
+}
+
+function find-envs-by-package() {
+    url="$APOLLO_API_URL/environmentStages?package=$1"
+    if [[ ! -z "$2" ]]; then
+        url="$url&stage=$2"
+    fi
+
+    echo $url
+    recs-fromatomfeed "$url" |
+        recs-eval '{{title}}'
 }
 
 function find-hosts-by-env() {
