@@ -65,10 +65,11 @@ function fast-git() {
 if is-at-least 4.3.11; then
     function precmd() {
         vcs_info
+
     }
 fi
                                   
 setopt prompt_subst
 
-PROMPT='${YELLOW}%3~%(!.${RED}.${BLUE}> ${RESET}'
+PROMPT='${GREEN}%m ${YELLOW}%3~%(!.${RED}.${BLUE}> ${RESET}'
 RPROMPT='${vcs_info_msg_0_}$RESET'

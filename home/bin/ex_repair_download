@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+if [[ -z $1 ]]; then
+    echo First parameter is vendor
+    exit
+fi
+
+if [[ -z $2 ]]; then
+    echo Second parameter is warehouse
+    exit
+fi
+
+vendor_uc="${(U)1}"
+vendor_lc="${(L)1}"
+warehouse="${(U)2}"
+
+echo $vendor_uc $vendor_lc
+
+s3GeneralFileDownloader -m com.amazon.warehousedeals.s3.$vendor_uc -b amzn.wd.repair.de.$vendor_lc -p ToVendor/$warehouse -dir .

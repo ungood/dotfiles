@@ -1,4 +1,4 @@
-DOTFILE_CANDIDATES=(~/.dotfiles ~/dotfiles ~/.home_away_from_home ~)
+DOTFILE_CANDIDATES=(~/.dotfiles/home ~/.home_away_from_home ~)
 
 for c in $DOTFILE_CANDIDATES; do
     if [ -d $c ]; then

@@ -1,0 +1,17 @@
+
+
+***********************************************************************
+Fatal NI connect error 12514, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=dcory1-orasvr.db.amazon.com)(CID=(PROGRAM=sqlplus)(HOST=jwwalker.desktop.amazon.com)(USER=jwwalker)))(ADDRESS=(PROTOCOL=TCP)(HOST=10.34.171.6)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.2.0.2.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.2.0.2.0 - Production
+  Time: 29-OCT-2012 14:46:31
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0

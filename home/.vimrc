@@ -42,7 +42,10 @@ set mouse=a
 
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 set expandtab
+
+autocmd FileType make setlocal noexpandtab
 
 map Y y$
 
@@ -54,3 +57,4 @@ map  <Esc>[8~ <End>
 imap <Esc>[7~ <Home>
 imap <Esc>[8~ <End>
 
+inoremap <S-Tab> <C-V><Tab>

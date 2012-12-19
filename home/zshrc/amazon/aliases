@@ -6,6 +6,14 @@ alias -g liqwf='WDLiquidationWorkflow'
 alias -g applog='application.log.`date -u +%F-%H`'
 alias -g svclog='service_log.`date -u +%F-%H`'
 
+function _bark {
+    bark -ConfigFile=/home/user/.bark_$1
+}
+
+alias bark-dub='_bark dub'
+alias bark-iad='_bark iad'
+alias bark-sea='_bark sea'
+
 function ws() {
     cd /workplace/jwwalker/$1
 }
