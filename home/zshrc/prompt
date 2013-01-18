@@ -63,12 +63,14 @@ function fast-git() {
 }
 
 if is-at-least 4.3.11; then
-    function precmd() {
-        vcs_info
-        print -rP "${YELLOW}${(l.$COLUMNS..-.)}${RESET}"   
-
-    }
+    precmd_functions+="vcs_info"
 fi
+
+function print_horiz_line() {
+    print -rP "${YELLOW}${(l.$COLUMNS..-.)}${RESET}"   
+}
+
+precmd_functions+="print_horiz_line"
                                   
 setopt prompt_subst
 

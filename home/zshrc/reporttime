@@ -1,0 +1,3 @@
+# If a command takes >10 seconds, automatically print the time it took
+export REPORTTIME=10
+export TIMEFMT=" Elapsed: %*E User: %U Kernel: %*S"
