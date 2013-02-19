@@ -27,3 +27,6 @@ function activate() {
     sudo runCommand -a Activate -e $1
 }
 
+function post-review() {
+    /apollo/env/SDETools/bin/post-review --note --target-groups goldfish-dev $@
+}
