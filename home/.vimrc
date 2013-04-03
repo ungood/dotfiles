@@ -7,6 +7,10 @@ set modeline
 set ignorecase
 set smartcase
 
+" line numbers - gray
+set number
+highlight LineNr ctermfg=grey ctermbg=black guibg=black guifg=grey
+
 set hidden         " Allow you to change buffers w/o saving or discarding changes
 set wildmenu       " Enable a menu for quick changing menus.
 set wildchar=<Tab>
@@ -51,6 +55,12 @@ map Y y$
 
 set nocompatible
 set backspace=2
+
+" Ctrl-P will toggle paste mode.
+set pastetoggle=<C-P>
+
+
+
 map  <Esc>[7~ <Home>
 map  <Esc>[8~ <End>
 

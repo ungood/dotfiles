@@ -70,9 +70,14 @@ function print_horiz_line() {
     print -rP "${YELLOW}${(l.$COLUMNS..-.)}${RESET}"   
 }
 
+function clear_warnings() {
+    PROMPT_WARNING=""
+}
+
 precmd_functions+="print_horiz_line"
+preexec_functions+="clear_warnings"
                                   
 setopt prompt_subst
 
-PROMPT='${GREEN}%m ${YELLOW}%3~%(!.${RED}.${BLUE}> ${RESET}'
+PROMPT='${GREEN}%m ${YELLOW}%3~${BR_RED}${PROMPT_WARNING}%(!.${RED}.${BLUE})> ${RESET}'
 RPROMPT='${vcs_info_msg_0_}$RESET'

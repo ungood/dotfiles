@@ -1,0 +1,9 @@
+function check_kerb() {
+    if ! klist -s; then
+        PROMPT_WARNING=" ${PROMPT_WARNING}Ticket!"
+    fi
+}
+
+precmd_functions+="check_kerb"
+
+alias kinit="kinit -f"

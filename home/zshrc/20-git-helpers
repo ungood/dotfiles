@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+# finds the name of the branch checked out in the PWD
+function print-git-branch() {
+    local branch
+    branch=$(git symbolic-ref HEAD 2>/dev/null)
+    branch=${branch##refs/heads/}
+    echo $branch
+}
+
+# prints the tracking branch for the given branch
+# parameter 1 should be the branch name
+function print-git-remote() {
+    remote=${$(git rev-parse --verify $1@{upstream} \
+        --symbolic-full-name --abbrev-ref 2>/dev/null)}
+    echo $remote
+}
+
+function print-git-ahead() {
+}

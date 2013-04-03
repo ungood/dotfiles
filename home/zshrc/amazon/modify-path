@@ -1,2 +1,2 @@
-prepend-path /apollo/env/Git/bin
-prepend-path /apollo/env/eclipse-3.7/bin
+append-path /apollo/env/Git/bin
+append-path /apollo/env/eclipse-3.7/bin

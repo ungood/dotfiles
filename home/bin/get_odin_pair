@@ -1,5 +1,5 @@
 #!/apollo/bin/env -e WarehouseDealsPythonUtils python
-import sys
+import sys,os
 from pyodinhttp import * 
  
 mat_name=sys.argv[1]
@@ -7,8 +7,7 @@ mat_name=sys.argv[1]
 try:
     principal=odin_material_retrieve(_materialName=mat_name, _materialType='Principal')
     credential=odin_material_retrieve(_materialName=mat_name, _materialType='Credential')
-    print("Principal:%s" % (principal))
-    print("Credential:%s" % (credential))
+    print("%s,%s,%s" % (mat_name, principal, credential))
 
 except OdinOperationError, err:
     print err
