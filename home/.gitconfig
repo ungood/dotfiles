@@ -1,6 +1,6 @@
 [user]
 	name = Jason Walker
-        email = jwwalker@amazon.com
+	email = jwwalker@amazon.com
 [github]
 	user = ungood
 [color]
@@ -17,7 +17,7 @@
 	refgraph = log --graph --all --simplify-by-decoration
 	rstatus = remote show origin
 	fixmodes = !git ls-tree -r master . | grep 100755 | cut -f 2 | xargs -d'\\n' chmod -x
-        obliterate = "!f() { git filter-branch --index-filger 'git rm --cached --ignore-unmatch $1'; }; f"
+    obliterate = "!f() { git filter-branch --index-filger 'git rm --cached --ignore-unmatch $1'; }; f"
 	logg = log --graph
 	loga = log --all
 	logga = log --graph --all
@@ -30,7 +30,7 @@
 [log]
 	date = short
 [merge]
-        tool = p4merge
+    tool = p4merge
 [diff]
         guitool = p4merge
 [mergetool "p4merge"]
@@ -38,7 +38,9 @@
     	keepTemporaries = false
     	trustExitCode = false
     	keepBackup = false
-[branch]
-	autosetuprebase = remote
 [push]
-	default = tracking
+	default = simple
+[branch]
+	autosetuprebase = always
+[rerere]
+	enabled = true
