@@ -30,9 +30,9 @@
 [log]
 	date = short
 [merge]
-    tool = p4merge
+    tool = vimdiff 
 [diff]
-        guitool = p4merge
+        guitool = vimdiff
 [mergetool "p4merge"]
     	cmd = "p4merge" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
     	keepTemporaries = false

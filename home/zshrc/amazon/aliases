@@ -14,10 +14,6 @@ alias bark-dub='_bark dub'
 alias bark-iad='_bark iad'
 alias bark-sea='_bark sea'
 
-function ws() {
-    cd /workplace/jwwalker/$1/src
-}
-
 function gopkg() {
     ws $1
     cdpkg $2
