@@ -14,6 +14,8 @@ alias bark-dub='_bark dub'
 alias bark-iad='_bark iad'
 alias bark-sea='_bark sea'
 
+alias reboothost='/opt/systems/bin/reboothost'
+
 function gopkg() {
     ws $1
     cdpkg $2
@@ -26,3 +28,4 @@ function activate() {
 function post-review() {
     /apollo/env/SDETools/bin/post-review --note --target-groups goldfish-dev $@
 }
+

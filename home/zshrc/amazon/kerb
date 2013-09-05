@@ -6,4 +6,4 @@ function check_kerb() {
 
 precmd_functions+="check_kerb"
 
-alias kinit="kinit -f"
+alias kinit="kinit -f -l 24h"

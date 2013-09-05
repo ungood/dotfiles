@@ -5,9 +5,24 @@
 	user = ungood
 [color]
 	ui = auto
+[color "branch"]
+    current = "green ul"
+    local = "yellow"
+    remote = "red"
+    plain = "normal"
+[color "decorate"]
+    HEAD = "green ul"
+    remoteBranch = "red"
+    branch = "yellow"
+    tag = "cyan"
+    stash = "bold cyan"
+[format]
+#	pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
+    pretty = %w(80,0,4)%C(bold red)%h %C(bold blue)%ad %C(green)%an%C(yellow)%d%n%Creset%s
 [core]
 	editor = vim
 	excludesfile = /home/jwwalker/.gitignore_global
+	pager = less -FMRiX
 [alias]
 	st = status
 	co = checkout
@@ -21,16 +36,17 @@
 	logg = log --graph
 	loga = log --all
 	logga = log --graph --all
+	start = "!f() { git branch --track $1 && git checkout $1; }; f"
+	amend = commit -a --amend
+	dag = log --graph --all
 [apply]
 	whitespace = nowarn
 [mergetool]
 	keepBackup = false
-[format]
-	pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
 [log]
 	date = short
 [merge]
-    tool = vimdiff 
+    tool = p4merge 
 [diff]
         guitool = vimdiff
 [mergetool "p4merge"]

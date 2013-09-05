@@ -16,4 +16,4 @@ warehouse="${(U)2}"
 
 echo $vendor_uc $vendor_lc
 
-s3GeneralFileDownloader -m com.amazon.warehousedeals.s3.$vendor_uc -b amzn.wd.repair.de.$vendor_lc -p ToVendor/$warehouse -dir .
+s3GeneralFileDownloader -m com.amazon.warehousedeals.s3.$vendor_uc -b amzn.wd.repair.us.$vendor_lc -p FromVendor/$warehouse -dir .
