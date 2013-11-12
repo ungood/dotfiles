@@ -67,11 +67,19 @@ imap <Esc>[8~ <End>
 
 inoremap <S-Tab> <C-V><Tab>
 
-" F2-4 select which pane to use in vimdiff, F5 refreshes
-nnoremap <F2> :diffget 2<CR>]c
-nnoremap <F3> :diffget 3<CR>]c
-nnoremap <F4> :diffget 4<CR>]c
-nnoremap <F5> :diffupdate<CR>
+" Changes for vimdiff
+if &diff
+    highlight DiffAdd    cterm=bold ctermfg=red ctermbg=black  gui=none guifg=bg guibg=red
+    highlight DiffDelete cterm=bold ctermfg=red ctermbg=black gui=none guifg=bg guibg=red
+    highlight DiffChange cterm=bold ctermfg=red ctermbg=black gui=none guifg=bg guibg=red
+    highlight DiffText   cterm=bold ctermfg=black ctermbg=red gui=none guifg=bg guibg=red
+
+    " F2-4 select which pane to use in vimdiff, F5 refreshes
+    nnoremap <F2> :diffget 2<CR>]c
+    nnoremap <F3> :diffget 3<CR>]c
+    nnoremap <F4> :diffget 4<CR>]c
+    nnoremap <F5> :diffupdate<CR>
+endif
 
 " F9 opens directory menu, F10 switches buffers, 
 nnoremap <F10> :b <C-Z>

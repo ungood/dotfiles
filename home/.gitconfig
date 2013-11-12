@@ -46,7 +46,7 @@
 [log]
 	date = short
 [merge]
-    tool = p4merge 
+	tool = vimdiff
 [diff]
         guitool = vimdiff
 [mergetool "p4merge"]

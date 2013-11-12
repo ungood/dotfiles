@@ -1,21 +1,36 @@
-DOTFILE_CANDIDATES=(~/.dotfiles/home ~/.home_away_from_home ~)
+# Find the directory this file exists in.
+ZSHRC=$(readlink -f "$HOME/.zshrc")
+DOTFILES=$(dirname "$ZSHRC")
 
-for c in $DOTFILE_CANDIDATES; do
-    if [ -d $c ]; then
-        export DOTFILES_DIR=$c
-        break
-    fi
-done
-
-source $DOTFILES_DIR/funcs
-
-export ENV_IMPROVEMENT_ROOT=/apollo/env/envImprovement
-ENV_IMPROVEMENT_ZSHRC=$ENV_IMPROVEMENT_ROOT/dotfiles/zshrc
-if [ -f $ENV_IMPROVEMENT_ZSHRC ]; then
+# initialize env improvement, if it is installed.
+ENV_IMPROVEMENT_ROOT=/apollo/env/envImprovement
+if [ -d $ENV_IMPROVEMENT_ROOT ]; then
     AUTO_TITLE_SCREENS="NO"
     source $ENV_IMPROVEMENT_ROOT/dotfiles/zshrc
 fi
 
-source-all $DOTFILES_DIR/zshrc
+ZSH=$HOME/.oh-my-zsh
 
-source-one ~/.zshrc_local
+# install oh-my-zsh if it does not exist
+if [ ! -d $ZSH ]; then
+    curl -Lk https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+fi
+
+# oh-my-zsh settings
+ZSH_CUSTOM="$DOTFILES/ohmyzsh"
+ZSH_THEME="ungood"
+COMPLETION_WAITING_DOTS="true"
+plugins=(git tmux)
+if [ -d "/apollo" ]; then
+    plugins+=amazon
+fi
+
+# tmux plugin settings
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOQUIT="false"
+
+source $ZSH/oh-my-zsh.sh
+
+if [ -f "$HOME/.zshrc_local" ]; then
+    source "$HOME/.zshrc_local"
+fi

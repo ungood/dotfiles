@@ -1,14 +1,3 @@
-#!/bin/zsh 
-
-alias ls='ls --color'
-alias mt='multitail'
-
-# Make sed use extended regex by defaul
-alias sed='sed -r'
-
-# prints folders, sorted by diskusage
-alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
-
 # My shorthand for "got to a projects directory"
 function ws() {
     proj_dir="$HOME/projects"

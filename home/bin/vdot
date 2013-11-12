@@ -1,5 +1,0 @@
-#!/bin/sh
-
-png_file=/tmp/vdot.png
-
-dot -Tpng $1 > $png_file && eog $png_file
