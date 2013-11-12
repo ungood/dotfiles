@@ -13,7 +13,11 @@ ZSH=$HOME/.oh-my-zsh
 
 # install oh-my-zsh if it does not exist
 if [ ! -d $ZSH ]; then
-    curl -Lk https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    temp_file=`mktemp`
+    temp_dir=`mktemp -d`
+    curl -Lk https://github.com/robbyrussell/oh-my-zsh/archive/master.zip > $temp_file
+    unzip $temp_file -d $temp_dir
+    mv "$temp_dir/oh-my-zsh-master" "$ZSH"
 fi
 
 # oh-my-zsh settings
