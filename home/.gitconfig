@@ -60,3 +60,5 @@
 	autosetuprebase = always
 [rerere]
 	enabled = true
+[amazon]
+	append-cr-url = false
