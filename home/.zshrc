@@ -29,10 +29,6 @@ if [ -d "/apollo" ]; then
     plugins+=amazon
 fi
 
-# tmux plugin settings
-ZSH_TMUX_AUTOSTART="true"
-ZSH_TMUX_AUTOQUIT="false"
-
 source $ZSH/oh-my-zsh.sh
 
 if [ -f "$HOME/.zshrc_local" ]; then
