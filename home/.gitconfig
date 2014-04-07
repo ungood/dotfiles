@@ -32,13 +32,13 @@
 	refgraph = log --graph --all --simplify-by-decoration
 	rstatus = remote show origin
 	fixmodes = !git ls-tree -r master . | grep 100755 | cut -f 2 | xargs -d'\\n' chmod -x
-    obliterate = "!f() { git filter-branch --index-filger 'git rm --cached --ignore-unmatch $1'; }; f"
 	logg = log --graph
 	loga = log --all
 	logga = log --graph --all
 	start = "!f() { git branch --track $1 && git checkout $1; }; f"
 	amend = commit -a --amend
 	dag = log --graph --all
+    cr = tag jw-cr -fm "Jason's last CR head."
 [apply]
 	whitespace = nowarn
 [mergetool]
@@ -46,9 +46,9 @@
 [log]
 	date = short
 [merge]
-	tool = vimdiff
+	tool = p4merge
 [diff]
-        guitool = vimdiff
+        guitool = p4merge
 [mergetool "p4merge"]
     	cmd = "p4merge" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
     	keepTemporaries = false

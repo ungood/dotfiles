@@ -37,3 +37,7 @@ function sqlplus() {
 
     rlwrap sqlplus $@
 }
+
+function activate() {
+    sudo /apollo/bin/runCommand -a Activate -e $1
+}
