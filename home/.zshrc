@@ -1,3 +1,6 @@
+# Clear some things
+precmd_functions=()
+
 # Find the directory this file exists in.
 ZSHRC=$(readlink "$HOME/.zshrc")
 DOTFILES=$(dirname "$ZSHRC")

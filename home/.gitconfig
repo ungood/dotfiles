@@ -38,7 +38,7 @@
 	start = "!f() { git branch --track $1 && git checkout $1; }; f"
 	amend = commit -a --amend
 	dag = log --graph --all
-    cr = tag jw-cr -fm "Jason's last CR head."
+    cr = tag jw-cr -fm 'Jasons last CR head.'
 [apply]
 	whitespace = nowarn
 [mergetool]

@@ -33,3 +33,4 @@ function git-add-desktop() {
     local package=$2
     git remote add desktop ssh://jwwalker@jwwalker.desktop.amazon.com:/user/jwwalker/projects/$1/src/$2
 }
+
