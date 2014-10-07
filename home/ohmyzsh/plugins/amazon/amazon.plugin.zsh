@@ -20,7 +20,7 @@ alias br-detach='brazil ws --detachenvironment --alias'
 
 alias kinit="kinit -f -l 24h"
 
-export PATH=/apollo/env/ruby193/bin:/apollo/env/SDETools/bin:$PATH
+export PATH=$PATH:/apollo/env/ruby193/bin:/apollo/env/SDETools/bin
 
 function activate() {
     sudo /apollo/bin/runCommand -a Activate -e $1

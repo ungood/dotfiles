@@ -26,7 +26,7 @@ function get_line() {
     echo "%{$fg[white]%}${(l.$width..-.)}"
 }
 
-PS1='%{$bg[black]%}${pwd} $(get_line) ${host} ${retcode} ${reset}
+PS1='${pwd} $(get_line) ${host} ${retcode} ${reset}
 ${vimode}${caret}${reset} '
 
 if which git &> /dev/null; then
