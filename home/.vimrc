@@ -8,6 +8,14 @@ set ignorecase
 set smartcase
 set ruler
 
+" Store swap files in ~/tmp
+set backup
+set writebackup
+set backupskip=/tmp/*
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 " WILD MENU
 set hidden         " Allow you to change buffers w/o saving or discarding changes
 set wildmenu       " Enable a menu for quick changing menus.
