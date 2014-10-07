@@ -21,7 +21,7 @@
     pretty = %w(80,0,4)%C(bold red)%h %C(bold blue)%ad %C(green)%an%C(yellow)%d%n%Creset%s
 [core]
 	editor = vim
-	excludesfile = /home/jwwalker/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	pager = less -FMRiX
 [alias]
 	st = status
@@ -62,3 +62,4 @@
 	enabled = true
 [amazon]
 	append-cr-url = false
+	pull-request-by-default = true

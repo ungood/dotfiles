@@ -11,3 +11,5 @@ apollo-overrides
 *.iml
 # Temp files
 *.swp
+
+.DS_Store
