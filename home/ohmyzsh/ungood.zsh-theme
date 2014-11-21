@@ -17,13 +17,15 @@ local host="%{$fg[blue]%}%m"
 local pwd="%{$fg[blue]%}%3~"
 local retcode="%{$fg[red]%}%?"
 local reset="%{${reset_color}%}"
+local default_line_color="%{$fg[white]%}"
 
 function get_line() {
     local top_line=`print -P "%3~%m%?"`
     local top_line_size=${#top_line}
     local width
+    local line_color=${HOST_LINE_COLOR-${default_line_color}}
     (( width = ${COLUMNS} - 4 - ${top_line_size} ))
-    echo "%{$fg[white]%}${(l.$width..-.)}"
+    echo "${line_color}${(l.$width..-.)}"
 }
 
 PS1='${pwd} $(get_line) ${host} ${retcode} ${reset}
