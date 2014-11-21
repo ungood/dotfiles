@@ -23,5 +23,5 @@ alias today='date -u +%F'
 
 # Executes a git command on all git directories under the current one.
 function rgit() {
-    find -L . -maxdepth 4 -type d -name \.git -print -execdir git "$@" \;
+    find -L . -maxdepth 4 -type d -name \.git -print -exec git -C "{}/.." "$@" \;
 }
