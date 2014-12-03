@@ -23,16 +23,19 @@ alias kinit="kinit -f -l 24h"
 
 alias desktop='ssh jwwalker.desktop.amazon.com'
 
-export PATH=/apollo/env/ruby193/bin:$PATH:/apollo/env/SDETools/bin
+SDE_TOOLS=/apollo/env/SDETools/bin
+if [ -d $SDE_TOOLS ]; then
+    export PATH=$PATH:$SDE_TOOLS
+fi
 
 function activate() {
     sudo /apollo/bin/runCommand -a Activate -e $1
 }
 
-function git-add-desktop() {
+function git-clone-desktop() {
     local ws=$1
     local package=$2
-    git remote add desktop ssh://jwwalker@jwwalker.desktop.amazon.com:/user/jwwalker/projects/$1/src/$2
+    git clone -o desktop ssh://jwwalker@jwwalker.desktop.amazon.com:/home/jwwalker/projects/$1/src/$2
 }
 
 function putdot() {
