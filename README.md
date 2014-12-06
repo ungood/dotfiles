@@ -6,7 +6,3 @@ To Install:
  cd .dotfiles
  ./install.sh
 ```
-
-# Personal Configuration Notes
-
-## IntelliJ
