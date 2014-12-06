@@ -9,7 +9,9 @@ source "$DOTFILES/antigen/antigen.zsh"
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle tmux
-antigen bundle zsh-users/zsh-syntax-highlighting
+
+# todo, only enable this on zsh that supports it
+#antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle "$DOTFILES/zsh"
 
 antigen theme "$DOTFILES/zsh/themes" ungood
@@ -17,8 +19,8 @@ antigen theme "$DOTFILES/zsh/themes" ungood
 # Amazon-specific stuff
 [[ $(hostname) =~ "amazon\.com" ]] && antigen bundle "$DOTFILES/amazon"
 
-# Make it so
-antigen apply
-
 # Host-specific overrides
 [[ -f "$HOME/.zshrc_local" ]] && source "$HOME/.zshrc_local"
+
+# Make it so
+antigen apply

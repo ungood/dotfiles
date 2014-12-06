@@ -4,6 +4,8 @@
 [submodule "amazon"]
 	path = amazon
 	url = ssh://git.amazon.com:2222/pkg/JwwalkerHome
+	branch = mainline
 [submodule "zsh"]
 	path = zsh
 	url = git@github.com:ungood/zsh.git
+	branch = master
