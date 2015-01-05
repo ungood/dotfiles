@@ -4,7 +4,6 @@ precmd_functions=()
 # Setup some paths (TODO: make more dynamic)
 DOTFILES="$HOME/.dotfiles"
 AMAZON_ROOT="$HOME/.amazon"
-ZSH_ROOT="$HOME/.zsh"
 
 # Load antigen and bundles
 source "$DOTFILES/antigen/antigen.zsh"
@@ -15,14 +14,12 @@ antigen bundle tmux
 # "z" command for going to recent dirs.
 antigen bundle rupa/z
 
-if [[ -d "$ZSH_ROOT" ]]; then
-    antigen bundle "$ZSH_ROOT"
-    antigen theme "$ZSH_ROOT/themes" ungood
-fi
+antigen bundle "ungood/zsh"
+antigen theme "ungood/zsh" themes/ungood
 
 # Amazon-specific stuff
-if [[ -d "$AMAZON_ROOT" ]]; then
-    antigen bundle "$AMAZON_ROOT" zsh
+if [[ -d $AMAZON_ROOT ]]; then
+    antigen bundle "$AMAZON_ROOT" zsh --no-local-clone
 fi
 
 # Host-specific overrides
