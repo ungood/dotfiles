@@ -14,7 +14,7 @@ set writebackup
 set backupskip=/tmp/*
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+"set undodir=~/.vim/undo//
 
 " WILD MENU
 set hidden         " Allow you to change buffers w/o saving or discarding changes
