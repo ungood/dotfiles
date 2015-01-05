@@ -1,10 +1,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen.git
-[submodule "amazon"]
-	path = amazon
-	url = ssh://git.amazon.com:2222/pkg/JwwalkerHome
-	branch = mainline
 [submodule "zsh"]
 	path = zsh
 	url = git@github.com:ungood/zsh.git

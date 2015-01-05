@@ -1,8 +1,10 @@
-# Clear some things
+# Clear some things (helpful when sourcing .zshrc again)
 precmd_functions=()
 
-# Setup some directories (TODO: make more dynamic)
+# Setup some paths (TODO: make more dynamic)
 DOTFILES="$HOME/.dotfiles"
+AMAZON_ROOT="$HOME/.amazon"
+ZSH_ROOT="$HOME/.zsh"
 
 # Load antigen and bundles
 source "$DOTFILES/antigen/antigen.zsh"
@@ -13,17 +15,20 @@ antigen bundle tmux
 # "z" command for going to recent dirs.
 antigen bundle rupa/z
 
-# todo, only enable this on zsh that supports it
-#antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen bundle "$DOTFILES/zsh"
-antigen theme "$DOTFILES/zsh/themes" ungood
+if [[ -d "$ZSH_ROOT" ]]; then
+    antigen bundle "$ZSH_ROOT"
+    antigen theme "$ZSH_ROOT/themes" ungood
+fi
 
 # Amazon-specific stuff
-[[ $(hostname) =~ "amazon\.com" ]] && antigen bundle "$DOTFILES/amazon"
+if [[ -d "$AMAZON_ROOT" ]]; then
+    antigen bundle "$AMAZON_ROOT" zsh
+fi
 
 # Host-specific overrides
-[[ -f "$HOME/.zshrc_local" ]] && source "$HOME/.zshrc_local"
+if [[ -f "$HOME/.zshrc_local" ]]; then
+    source "$HOME/.zshrc_local"
+fi
 
 # Make it so
 antigen apply
