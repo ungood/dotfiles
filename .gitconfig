@@ -50,7 +50,7 @@
 [diff]
         guitool = p4merge
 [mergetool "p4merge"]
-    	cmd = "p4merge" "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    	cmd = "p4merge" "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
     	keepTemporaries = false
     	trustExitCode = false
     	keepBackup = false
