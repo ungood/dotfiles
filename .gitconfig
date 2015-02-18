@@ -1,10 +1,10 @@
 [user]
-	name = Jason Walker
-	email = jwwalker@amazon.com
+    name = Jason Walker
+    email = jwwalker@amazon.com
 [github]
-	user = ungood
+    user = ungood
 [color]
-	ui = auto
+    ui = auto
 [color "branch"]
     current = "green ul"
     local = "yellow"
@@ -17,49 +17,49 @@
     tag = "cyan"
     stash = "bold cyan"
 [format]
-#	pretty = %w(80,0,4)%C(bold red)%h %Cblue%ad%C(yellow)%d%Creset %s %Cgreen~%an%Creset
     pretty = %w(80,0,4)%C(bold red)%h %C(bold blue)%ad %C(green)%an%C(yellow)%d%n%Creset%s
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
-	pager = less -FMRiX
+    editor = vim
+    excludesfile = ~/.gitignore_global
+    pager = less -FMRiX
 [alias]
-	st = status
-	co = checkout
-	ci = commit
-	br = branch
-	call = !git add -A . && git commit
-	refgraph = log --graph --all --simplify-by-decoration
-	rstatus = remote show origin
-	fixmodes = !git ls-tree -r master . | grep 100755 | cut -f 2 | xargs -d'\\n' chmod -x
-	logg = log --graph
-	loga = log --all
-	logga = log --graph --all
-	start = "!f() { git branch --track $1 && git checkout $1; }; f"
-	amend = commit -a --amend
-	dag = log --graph --all
+    st = status
+    co = checkout
+    ci = commit
+    br = branch
+    call = !git add -A . && git commit
+    refgraph = log --graph --all --simplify-by-decoration
+    rstatus = remote show origin
+    fixmodes = !git ls-tree -r master . | grep 100755 | cut -f 2 | xargs -d'\\n' chmod -x
+    logg = log --graph
+    loga = log --all
+    logga = log --graph --all
+    start = "!f() { git branch --track $1 && git checkout $1; }; f"
+    amend = commit -a --amend
+    dag = log --graph --all
     cr = tag jw-cr -fm 'Jasons last CR head.'
 [apply]
-	whitespace = nowarn
+    whitespace = nowarn
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [log]
-	date = short
+    date = short
 [merge]
-	tool = p4merge
+    tool = p4merge
 [diff]
-        guitool = p4merge
+    guitool = p4merge
 [mergetool "p4merge"]
-    	cmd = "p4merge" "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
-    	keepTemporaries = false
-    	trustExitCode = false
-    	keepBackup = false
+    cmd = "p4merge" "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
 [push]
-	default = simple
+    default = simple
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [rerere]
-	enabled = true
+    enabled = true
 [amazon]
-	append-cr-url = false
-	pull-request-by-default = true
+    append-cr-url = true
+    pull-request-using-local-branch-name = true
+    pull-request-by-default = true
