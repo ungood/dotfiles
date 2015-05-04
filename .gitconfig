@@ -42,17 +42,14 @@
     whitespace = nowarn
 [mergetool]
     keepBackup = false
+    prompt = false
+    keepTemporaries = false
 [log]
     date = short
 [merge]
     tool = p4merge
 [diff]
     guitool = p4merge
-[mergetool "p4merge"]
-    cmd = "p4merge" "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
-    keepTemporaries = false
-    trustExitCode = false
-    keepBackup = false
 [push]
     default = simple
 [branch]

@@ -7,7 +7,6 @@ spellChecking = true
 softWrap = true
 wrapColumn = "Use Window Frame"
 showInvisibles = false 
-softTabs = false
 tabSize = 4
 
 [ text.html.markdown ]
