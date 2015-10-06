@@ -14,3 +14,4 @@ apollo-overrides
 
 .DS_Store
 velocity.log
+coverage-error.log
