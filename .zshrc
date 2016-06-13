@@ -29,3 +29,5 @@ fi
 
 # Make it so
 antigen apply
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
