@@ -12,6 +12,7 @@ antigen bundle git
 antigen bundle tmux
 
 # Useful python bundles
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 antigen bundle pyenv
 
 # "z" command for going to recent dirs.
@@ -29,8 +30,6 @@ fi
 if [[ -f "$HOME/.zshrc_local" ]]; then
     source "$HOME/.zshrc_local"
 fi
-
-
 
 # Make it so
 antigen apply
