@@ -11,6 +11,9 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle tmux
 
+# Useful python bundles
+antigen bundle pyenv
+
 # "z" command for going to recent dirs.
 antigen bundle rupa/z
 
@@ -26,6 +29,8 @@ fi
 if [[ -f "$HOME/.zshrc_local" ]]; then
     source "$HOME/.zshrc_local"
 fi
+
+
 
 # Make it so
 antigen apply
