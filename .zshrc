@@ -10,6 +10,7 @@ source "$DOTFILES/antigen/antigen.zsh"
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle tmux
+antigen bundle Tarrasch/zsh-autoenv # Useful auto-env support
 
 # Useful python bundles
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1

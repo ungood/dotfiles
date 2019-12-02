@@ -13,6 +13,15 @@ tabSize = 4
 softWrap = true
 wrapColumn = "Use Window Frame"
 tabSize = 2
-showInvisibles = false 
 
+[ *.{yaml,yml} ]
+softWrap = true
+wrapColumn = "Use Window Frame"
+tabSize = 2
+showInvisibles = true
 
+[ *.{js,json} ]
+softWrap = true
+wrapColumn = "Use Window Frame"
+tabSize = 2
+showInvisibles = true

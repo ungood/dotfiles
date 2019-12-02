@@ -6,7 +6,9 @@ eclipse-bin
 build
 coral-generated-src
 apollo-overrides
+wrapper
 
+out
 .idea
 *.iml
 # Temp files
