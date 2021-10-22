@@ -1,6 +1,12 @@
 [user]
-	name = Jason Walker 🦉
+	name = Jason Walker 🦖
     email = jwwalker@amazon.com
+[includeIf "gitdir:**/personal/"]
+    path = ~/.gitconfig_personal
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ~/.gitconfig_personal
+[includeIf "gitdir:~/.antigen/"]
+    path = ~/.gitconfig_personal
 [github]
     user = ungood
 [color]
@@ -60,3 +66,5 @@
     append-cr-url = true
     pull-request-using-local-branch-name = true
     pull-request-by-default = true
+[init]
+	defaultBranch = main

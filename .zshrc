@@ -1,3 +1,9 @@
+# Cleans up some errors from antigen on mac.
+setopt INTERACTIVE_COMMENTS
+
+# https://apple.stackexchange.com/questions/312795/zsh-paste-from-the-clipboard-a-command-takes-a-few-second-to-be-write-in-the-ter
+export DISABLE_MAGIC_FUNCTIONS=true
+
 # Clear some things (helpful when sourcing .zshrc again)
 precmd_functions=()
 
@@ -9,7 +15,6 @@ AMAZON_ROOT="$HOME/.amazon"
 source "$DOTFILES/antigen/antigen.zsh"
 antigen use oh-my-zsh
 antigen bundle git
-#antigen bundle tmux
 antigen bundle Tarrasch/zsh-autoenv # Useful auto-env support
 
 # Useful python bundles
@@ -24,15 +29,18 @@ antigen theme "ungood/zsh" themes/ungood
 
 # Amazon-specific stuff
 if [[ -d $AMAZON_ROOT ]]; then
+    echo "Applying Amazon Bundle"
     antigen bundle "$AMAZON_ROOT" zsh --no-local-clone
 fi
 
 # Host-specific overrides
 if [[ -f "$HOME/.zshrc_local" ]]; then
+    echo "Including .zshrc_local"
     source "$HOME/.zshrc_local"
 fi
 
+# This must be last to work properly.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
 # Make it so
 antigen apply
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
