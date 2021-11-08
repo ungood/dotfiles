@@ -17,3 +17,6 @@ out
 .DS_Store
 velocity.log
 coverage-error.log
+
+# direnv file usually should not be committed.
+.envrc

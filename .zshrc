@@ -20,7 +20,6 @@ antigen bundle Tarrasch/zsh-autoenv # Useful auto-env support
 # Useful python bundles
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 antigen bundle pyenv
-antigen bundle darvid/zsh-poetry
 
 # "z" command for going to recent dirs.
 antigen bundle rupa/z
