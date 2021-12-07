@@ -1,6 +1,9 @@
 # Profiles zsh, then you can run zprof to check the results.
 zmodload zsh/zprof
 
+# https://github.com/snkinard/dotfiles/issues/9
+setopt INTERACTIVE_COMMENTS
+
 # https://apple.stackexchange.com/questions/312795/zsh-paste-from-the-clipboard-a-command-takes-a-few-second-to-be-write-in-the-ter
 export DISABLE_MAGIC_FUNCTIONS=true
 
@@ -15,7 +18,6 @@ AMAZON_ROOT="$HOME/.amazon"
 source "$DOTFILES/antigen/antigen.zsh"
 antigen use oh-my-zsh
 antigen bundle git
-antigen bundle Tarrasch/zsh-autoenv # Useful auto-env support
 
 # "z" command for going to recent dirs.
 antigen bundle rupa/z
