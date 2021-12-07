@@ -28,6 +28,7 @@
     editor = vim
     excludesfile = ~/.gitignore_global
     pager = less -FMRiX
+    abbrev = 8
 [alias]
     st = status
     co = checkout
@@ -68,3 +69,5 @@
     pull-request-by-default = true
 [init]
 	defaultBranch = main
+[protocol "codecommit"]
+	allow = always
