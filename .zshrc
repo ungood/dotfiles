@@ -29,7 +29,7 @@ antigen theme "ungood/zsh" themes/ungood
 
 # Amazon-specific stuff
 if [[ -d $AMAZON_ROOT ]]; then
-    echo "Applying Amazon Bundle"
+    echo "Applying Amazon Bundle from $AMAZON_ROOT"
     antigen bundle "$AMAZON_ROOT" zsh --no-local-clone
 fi
 
@@ -45,3 +45,4 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Make it so
 antigen apply
 export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
+#source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

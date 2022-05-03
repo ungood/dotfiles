@@ -1,3 +1,2 @@
 export HOST_LINE_COLOR="%{$fg[yellow]%}"
-antigen bundle zsh-users/zsh-syntax-highlighting
-~/.amazon/bin/random-name.py
+#antigen bundle zsh-users/zsh-syntax-highlighting
