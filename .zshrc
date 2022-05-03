@@ -19,6 +19,8 @@ source "$DOTFILES/antigen/antigen.zsh"
 antigen use oh-my-zsh
 antigen bundle git
 
+antigen bundle kiurchv/asdf.plugin.zsh
+
 # "z" command for going to recent dirs.
 antigen bundle rupa/z
 
@@ -42,3 +44,4 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Make it so
 antigen apply
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
