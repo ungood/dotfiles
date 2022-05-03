@@ -57,8 +57,12 @@
     tool = p4merge
 [diff]
     guitool = p4merge
+[pull]
+    rebase = true
 [push]
     default = simple
+[fetch]
+    parallel = 0
 [branch]
     autosetuprebase = always
 [rerere]
@@ -76,5 +80,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[fetch]
-	parallel = 0
