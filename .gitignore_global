@@ -21,4 +21,6 @@ coverage-error.log
 # direnv file usually should not be committed.
 .envrc
 
+# VS Code
 .vscode
+.attach_pid*

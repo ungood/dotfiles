@@ -44,5 +44,3 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Make it so
 antigen apply
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
-#source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
