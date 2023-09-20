@@ -12,7 +12,7 @@ precmd_functions=()
 
 # Setup some paths (TODO: make more dynamic)
 DOTFILES="$HOME/.dotfiles"
-AMAZON_ROOT="$HOME/.amazon"
+WORK_DOTFILES="$HOME/.cruise"
 
 # Load antigen and bundles
 source "$DOTFILES/antigen/antigen.zsh"
@@ -28,9 +28,9 @@ antigen bundle "ungood/zsh"
 antigen theme "ungood/zsh" themes/ungood
 
 # Amazon-specific stuff
-if [[ -d $AMAZON_ROOT ]]; then
-    echo "Applying Amazon Bundle from $AMAZON_ROOT"
-    antigen bundle "$AMAZON_ROOT" zsh --no-local-clone
+if [[ -d $WORK_DOTFILES ]]; then
+    echo "Applying work bundle from $WORK_DOTFILES"
+    antigen bundle "$WORK_DOTFILES" antigen --no-local-clone
 fi
 
 # Host-specific overrides
@@ -44,3 +44,5 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Make it so
 antigen apply
+
+## Anything below this line was probably put here automatically by something and should be moved to antigen.
