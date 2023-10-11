@@ -10,7 +10,7 @@ export DISABLE_MAGIC_FUNCTIONS=true
 # Clear some things (helpful when sourcing .zshrc again)
 precmd_functions=()
 
-# Setup some paths (TODO: make more dynamic)
+# Setup some paths
 DOTFILES="$HOME/.dotfiles"
 WORK_DOTFILES="$HOME/.cruise"
 
@@ -27,7 +27,7 @@ antigen bundle rupa/z
 antigen bundle "ungood/zsh"
 antigen theme "ungood/zsh" themes/ungood
 
-# Amazon-specific stuff
+# Customize the shell with my work-specific bundle.
 if [[ -d $WORK_DOTFILES ]]; then
     echo "Applying work bundle from $WORK_DOTFILES"
     antigen bundle "$WORK_DOTFILES" antigen --no-local-clone
