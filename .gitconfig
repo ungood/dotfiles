@@ -1,6 +1,14 @@
 [user]
-	name = Jason Walker
-	useConfigOnly = true
+    name = Jason Walker
+    useConfigOnly = true
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig_personal
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ~/.gitconfig_personal
+[includeIf "gitdir:~/.antigen/"]
+    path = ~/.gitconfig_personal
+[includeIf "gitdir:~/workspaces/"]
+    path = ~/.gitconfig_work
 [color]
     ui = auto
 [color "branch"]

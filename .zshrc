@@ -33,16 +33,16 @@ if [[ -d $WORK_DOTFILES ]]; then
     antigen bundle "$WORK_DOTFILES" antigen --no-local-clone
 fi
 
-# Host-specific overrides
-if [[ -f "$HOME/.zshrc_local" ]]; then
-    echo "Including .zshrc_local"
-    source "$HOME/.zshrc_local"
-fi
-
 # This must be last to work properly.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Make it so
 antigen apply
+
+# Host-specific overrides
+if [[ -f "$HOME/.zshrc_local" ]]; then
+    echo "Including .zshrc_local"
+    source "$HOME/.zshrc_local"
+fi
 
 ## Anything below this line was probably put here automatically by something and should be moved to antigen.
