@@ -37,6 +37,8 @@ fi
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Make it so
+echo "Applying Antigen bundles."
+echo "Run 'antigen reset' if you've changed them locally."
 antigen apply
 
 # Host-specific overrides

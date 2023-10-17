@@ -1,3 +1,6 @@
 [user]
-	name = Jason Walker
+    name = Jason Walker
     email = jason.walker@getcruise.com
+[url "git@github.robot.car:"]
+    insteadOf = https://github.robot.car/
+    
