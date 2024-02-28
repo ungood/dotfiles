@@ -62,6 +62,7 @@
     rebase = true
 [push]
     default = simple
+	autoSetupRemote = true
 [fetch]
     parallel = 0
 [branch]
