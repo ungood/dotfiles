@@ -22,6 +22,8 @@
     branch = "yellow"
     tag = "cyan"
     stash = "bold cyan"
+[column]
+    ui = auto
 [format]
     pretty = %w(80,0,4)%C(bold red)%h %C(bold blue)%ad %C(green)%an%C(yellow)%d%n%Creset%s
 [core]
@@ -58,15 +60,24 @@
     tool = p4merge
 [diff]
     guitool = p4merge
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [pull]
     rebase = true
 [push]
     default = simple
 	autoSetupRemote = true
+	followTags = true
 [fetch]
     parallel = 0
+	prune = true
+	pruneTags = true
+	all = true
 [branch]
     autosetuprebase = always
+    sort = -committerdate
 [rerere]
     enabled = true
 [init]
@@ -78,3 +89,11 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[tag]
+	sort = version:refname
+[help]
+	autocorrect = prompt
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
