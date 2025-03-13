@@ -1,13 +1,24 @@
-This package contains my personal dotfiles, using [stow](https://www.gnu.org/software/stow/manual/stow.html) to
+This package contains my personal dotfiles, using chezmoi to manage them.
+
 manage them.
 
-To Install:
+TODO:
 
-```
- cd ~
- git clone git@github.com:ungood/dotfiles.git .dotfiles
- cd .dotfiles
- ./install.sh
+## Installation
+
+Installs chezmoi and this dotfiles repository in one command. Note that I prefer to use ~/.dotfiles as the source
+directory instead of chezmoi's default.
+
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --source ~/.dotfiles --apply ungood
 ```
 
-To configure things for a specific host, add a .zshrc_local file, examples of which are in the local directory.
+## Todo
+
+* Install fish plugins. See [example](https://github.com/stevewm/dotfiles/blob/main/run_onchange_install-packages.sh.tmpl)
+* Install Brewfile (and automate keeping it updated)
+* Testing
+
+## Inspiration
+
+* <https://github.com/andrewbrey/dotfiles>
