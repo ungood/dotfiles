@@ -48,3 +48,5 @@ if [[ -f "$HOME/.zshrc_local" ]]; then
 fi
 
 ## Anything below this line was probably put here automatically by something and should be moved to antigen.
+
+alias gam="/Users/jason.walker/bin/gam7/gam"

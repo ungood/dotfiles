@@ -1,8 +1,11 @@
+This package contains my personal dotfiles, using [stow](https://www.gnu.org/software/stow/manual/stow.html) to
+manage them.
+
 To Install:
 
 ```
  cd ~
- git clone --recursive git@github.com:ungood/dotfiles.git .dotfiles
+ git clone git@github.com:ungood/dotfiles.git .dotfiles
  cd .dotfiles
  ./install.sh
 ```
