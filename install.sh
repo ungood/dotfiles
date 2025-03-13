@@ -10,3 +10,4 @@ install git
 install misc
 install vim
 install zsh
+install fish
