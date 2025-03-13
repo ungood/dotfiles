@@ -3,12 +3,6 @@
 		{
 			"path": "."
 		},
-		{
-			"path": "../.amazon"
-		},
-		{
-			"path": "../.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-ungood-SLASH-zsh.git"
-		}
 	],
 	"settings": {}
 }

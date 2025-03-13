@@ -1,11 +1,12 @@
 #/usr/bin/env bash
+set -euo pipefail
 
-DIR="$( cd "$( dirname "$0" )" && pwd )"
-DIR=$DIR
+function install() {
+    package=$1
+    stow -vv -t ${HOME} $package
+}
 
-FILES=`ls -A1 $DIR | egrep -iv "^\.git$" | egrep -i "^\."`
-for file in $FILES
-do
-    echo $file
-    ln -sf $DIR/$file $HOME/$file
-done
+install git
+install misc
+install vim
+install zsh
