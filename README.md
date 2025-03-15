@@ -18,6 +18,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --source ~/.dotfiles --apply ungood
 I don't really expect people to contribute to my personal dotfiles, so this is just notes for myself:
 
 * Track a new file: `chezmoi add`
+* Show differences: `chezmoi diff`
+* Update source from target files: `chezmoi re-add`
 * Apply changes: `chezmoi apply`
 * Don't forget to `git push`!
 
@@ -26,6 +28,7 @@ I don't really expect people to contribute to my personal dotfiles, so this is j
 * Install fish plugins. See [example](https://github.com/stevewm/dotfiles/blob/main/run_onchange_install-packages.sh.tmpl)
 * Install Brewfile (and automate keeping it updated)
 * Testing
+* MacOS settings: [Example](https://github.com/stevewm/dotfiles/blob/main/run_onchange_after_configure-macos.sh.tmpl)
 
 ## Inspiration
 

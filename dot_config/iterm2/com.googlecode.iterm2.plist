@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Command</key>
-	<string></string>
+	<string>/opt/homebrew/bin/fish</string>
 	<key>Default Bookmark Guid</key>
 	<string>ACB79BA7-A396-43E8-9332-3CD5CC55CE47</string>
 	<key>HapticFeedbackForEsc</key>
@@ -907,7 +907,7 @@
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
+	<integer>5</integer>
 	<key>TabViewType</key>
 	<integer>2</integer>
 	<key>VisualIndicatorForEsc</key>
