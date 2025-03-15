@@ -33,3 +33,4 @@ I don't really expect people to contribute to my personal dotfiles, so this is j
 ## Inspiration
 
 * <https://github.com/andrewbrey/dotfiles>
+* <https://github.com/dfroberg/dotfiles/blob/master/dot_config/private_fish/config.fish.tmpl>
