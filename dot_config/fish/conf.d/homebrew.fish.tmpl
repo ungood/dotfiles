@@ -1,0 +1,9 @@
+{{ if (eq .chezmoi.os "darwin") -}}
+
+if command -v brew
+    brew shellenv | source
+else
+    echo "Homebrew is not installed"
+end
+
+{{ end -}}
