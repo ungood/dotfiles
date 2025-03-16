@@ -1,7 +1,9 @@
 {{ if (eq .chezmoi.os "darwin") -}}
 
-if command -v brew
-    brew shellenv | source
+set -l brew /opt/homebrew/bin/brew
+
+if command -q $brew 
+    $brew shellenv | source
 else
     echo "Homebrew is not installed"
 end

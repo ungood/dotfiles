@@ -1,5 +1,5 @@
-if command -v mise
+if command -q mise
     mise activate fish | source
 else
-    echo "Mise is not installed"
+    echo "mise is not installed"
 end
