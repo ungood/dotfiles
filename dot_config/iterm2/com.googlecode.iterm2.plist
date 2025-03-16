@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Command</key>
-	<string>/opt/homebrew/bin/fish</string>
+	<string></string>
 	<key>Default Bookmark Guid</key>
 	<string>ACB79BA7-A396-43E8-9332-3CD5CC55CE47</string>
 	<key>HapticFeedbackForEsc</key>
