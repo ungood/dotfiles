@@ -1,6 +1,10 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+  export GREP_OPTIONS='--color=auto'
+  export LESS="-iMFXR"
 end
+
+# Disable fish_greeting
+set -g fish_greeting
 
 # pnpm
 set -gx PNPM_HOME "/Users/jason.walker/Library/pnpm"
@@ -9,6 +13,3 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
