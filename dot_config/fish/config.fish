@@ -6,7 +6,7 @@ end
 # Disable fish_greeting
 set -g fish_greeting
 
-# pnpm
+# pnpm - TODO: Fix this...
 set -gx PNPM_HOME "/Users/jason.walker/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
