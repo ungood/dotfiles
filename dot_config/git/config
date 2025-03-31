@@ -26,7 +26,7 @@
     pretty = %w(80,0,4)%C(bold red)%h %C(bold blue)%ad %C(green)%an%C(yellow)%d%n%Creset%s
 [core]
     editor = vim
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/ignore
     pager = less -FMRiX
     abbrev = 8
 [alias]
