@@ -3,9 +3,6 @@ if status is-interactive
   export LESS="-iMFXR"
 end
 
-# Disable fish_greeting
-set -g fish_greeting
-
 # pnpm - TODO: Fix this...
 set -gx PNPM_HOME "/Users/jason.walker/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH

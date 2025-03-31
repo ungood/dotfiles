@@ -5,7 +5,7 @@ set -l brew /opt/homebrew/bin/brew
 if command -q $brew 
     $brew shellenv | source
 else
-    echo "Homebrew is not installed"
+    warn "Homebrew is not installed"
 end
 
 {{ end -}}

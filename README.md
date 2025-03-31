@@ -25,10 +25,13 @@ I don't really expect people to contribute to my personal dotfiles, so this is j
 
 ## Todo
 
-* Install fish plugins. See [example](https://github.com/stevewm/dotfiles/blob/main/run_onchange_install-packages.sh.tmpl)
-* Install Brewfile (and automate keeping it updated)
 * Testing
-* MacOS settings: [Example](https://github.com/stevewm/dotfiles/blob/main/run_onchange_after_configure-macos.sh.tmpl)
+* 1Password and key management
+* Setting fish as default shell: [Source](https://mmazzarolo.com/blog/2023-11-16-my-fish-shell-setup-on-macos/)
+* Keep iterm2 integration updated?
+* MacOS settings, examples:
+  * <https://github.com/stevewm/dotfiles/blob/main/run_onchange_after_configure-macos.sh.tmpl>
+  * <https://github.com/politician/dotfiles/blob/main/run_once_before_2-configure-system-darwin.sh.tmpl>
 
 ## Inspiration
 

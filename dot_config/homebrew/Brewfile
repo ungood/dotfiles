@@ -1,4 +1,4 @@
-# Developer tools that are configured in this repository
+# Tools that are configured in this repository
 brew "fish"
 brew "git"
 brew "git-lfs"
@@ -31,7 +31,8 @@ cask "iterm2"
 cask "rectangle"
 cask "visual-studio-code"
 
-# VS Code extensions
+## VS Code extensions
+
 vscode "editorconfig.editorconfig"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.remote-ssh"
@@ -42,3 +43,5 @@ vscode "ms-vscode.live-server"
 vscode "ms-vscode.makefile-tools"
 vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-server"
+# Even Better TOML
+vscode "tamasfe.even-better-toml"
